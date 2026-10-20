@@ -215,22 +215,22 @@ static void motor_move_step(struct motor_device *mdev)
 			step = motor->cur_steps % 8;
 			step = step < 0 ? step + 8 : step;
 			if (motor->pdata->motor_st1_gpio)
-				gpio_direction_output(motor->pdata->motor_st1_gpio, motor_coil_level(step_8[step] & 0x8));
+				gpio_set_value(motor->pdata->motor_st1_gpio, motor_coil_level(step_8[step] & 0x8));
 			if (motor->pdata->motor_st2_gpio)
-				gpio_direction_output(motor->pdata->motor_st2_gpio, motor_coil_level(step_8[step] & 0x4));
+				gpio_set_value(motor->pdata->motor_st2_gpio, motor_coil_level(step_8[step] & 0x4));
 			if (motor->pdata->motor_st3_gpio)
-				gpio_direction_output(motor->pdata->motor_st3_gpio, motor_coil_level(step_8[step] & 0x2));
+				gpio_set_value(motor->pdata->motor_st3_gpio, motor_coil_level(step_8[step] & 0x2));
 			if (motor->pdata->motor_st4_gpio)
-				gpio_direction_output(motor->pdata->motor_st4_gpio, motor_coil_level(step_8[step] & 0x1));
+				gpio_set_value(motor->pdata->motor_st4_gpio, motor_coil_level(step_8[step] & 0x1));
 		}else{
 			if (motor->pdata->motor_st1_gpio)
-				gpio_direction_output(motor->pdata->motor_st1_gpio, motor_coil_level(0));
+				gpio_set_value(motor->pdata->motor_st1_gpio, motor_coil_level(0));
 			if (motor->pdata->motor_st2_gpio)
-				gpio_direction_output(motor->pdata->motor_st2_gpio, motor_coil_level(0));
+				gpio_set_value(motor->pdata->motor_st2_gpio, motor_coil_level(0));
 			if (motor->pdata->motor_st3_gpio)
-				gpio_direction_output(motor->pdata->motor_st3_gpio, motor_coil_level(0));
+				gpio_set_value(motor->pdata->motor_st3_gpio, motor_coil_level(0));
 			if (motor->pdata->motor_st4_gpio)
-				gpio_direction_output(motor->pdata->motor_st4_gpio, motor_coil_level(0));
+				gpio_set_value(motor->pdata->motor_st4_gpio, motor_coil_level(0));
 		}
 		if(motor->state == MOTOR_OPS_RESET){
 			motor->total_steps++;
